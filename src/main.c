@@ -296,7 +296,6 @@ void configure_lvgl(void) {
 	disp_drv.hor_res = LV_HOR_RES_MAX;      
 	disp_drv.ver_res = LV_VER_RES_MAX;      
 
-	lv_disp_t * disp;
 	lv_disp_drv_register(&disp_drv); 
 	
 	/* Init input on LVGL */
