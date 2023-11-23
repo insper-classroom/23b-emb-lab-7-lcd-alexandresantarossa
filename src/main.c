@@ -220,8 +220,6 @@ void lv_termostato(void){
 	
 
 static void task_lcd(void *pvParameters) {
-	int px, py;
-
 	lv_termostato();
 
 	for (;;)  {
@@ -277,7 +275,7 @@ void my_flush_cb(lv_disp_drv_t * disp_drv, const lv_area_t * area, lv_color_t * 
 }
 
 void my_input_read(lv_indev_drv_t * drv, lv_indev_data_t*data) {
-	int px, py, pressed;
+	int px, py;
 	
 	if (readPoint(&px, &py))
 		data->state = LV_INDEV_STATE_PRESSED;
@@ -299,13 +297,13 @@ void configure_lvgl(void) {
 	disp_drv.ver_res = LV_VER_RES_MAX;      
 
 	lv_disp_t * disp;
-	disp = lv_disp_drv_register(&disp_drv); 
+	lv_disp_drv_register(&disp_drv); 
 	
 	/* Init input on LVGL */
 	lv_indev_drv_init(&indev_drv);
 	indev_drv.type = LV_INDEV_TYPE_POINTER;
 	indev_drv.read_cb = my_input_read;
-	lv_indev_t * my_indev = lv_indev_drv_register(&indev_drv);
+	lv_indev_drv_register(&indev_drv);
 }
 
 /************************/
